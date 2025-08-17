@@ -8,20 +8,25 @@ function twoSum(nums: number[], target: number): number[] | null {
     if(nums.length < 2)
         return null
 
-    const res: number[] = []
+    // the idea is to keep trak of numbers, and they position, that have already been extracted
+    // and at each step search in this pool if we have the complement
+
+    const complementSet = new Map<number, number>()
 
     for(let i = 0; i < nums.length; i++) {
-        for(let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] == target)
-            {
-                res.push(i)
-                res.push(j)
-                return res
-            }
+
+        const currentComplement = target - nums[i]
+
+        if(complementSet.has(currentComplement)) {
+            return [complementSet.get(currentComplement)!, i]
         }
+        else{
+            complementSet.set(nums[i], i)
+        }
+
     }
 
-    return res
+    return []
 }
 
 // Test cases
