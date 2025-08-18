@@ -1,7 +1,7 @@
 // Implement a generic Stack class with proper TypeScript typing that supports push, pop, peek, 
 // and isEmpty operations.
 
-class Stack<T> {
+export class Stack<T> {
     
     // Your implementation here
 
